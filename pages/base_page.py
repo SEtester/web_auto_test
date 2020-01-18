@@ -2,10 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-URL = 'https://www.tapd.cn/'
-LOGIN_URL = '/cloud_logins/login'
-TIMEOUT = 10
-POLL_FREQUENCY = 0.5
+from utils.constants import TIMEOUT, POLL_FREQUENCY, DOMAIN
 
 
 class BasePage():
@@ -21,7 +18,7 @@ class BasePage():
 
     def get_url(self, path=None):
         if path != None:
-            url = URL + path
+            url = DOMAIN + path
         else:
             url = None
 
@@ -31,7 +28,7 @@ class BasePage():
 
 if __name__ == '__main__':
     from selenium.webdriver.common.by import By
-
+    from utils.constants import LOGIN_URL
     # 构造base_page对象，同时打开目的页面
     base_page = BasePage(path=LOGIN_URL)
     login_locator = (By.CSS_SELECTOR, '#username')
