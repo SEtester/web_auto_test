@@ -1,6 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.webdriver.common.by import By
 from utils.constants import TIMEOUT, POLL_FREQUENCY, DOMAIN
 from utils.se_utils import Driver
 
