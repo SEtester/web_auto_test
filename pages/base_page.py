@@ -2,12 +2,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from utils.constants import TIMEOUT, POLL_FREQUENCY, DOMAIN
-from utils.se_utils import DriverUtil
+from utils.se_utils import Driver
 
 class BasePage():
 
     def __init__(self, path=None):
-        self.driver = DriverUtil.get_driver()
+        self.driver = Driver.get_driver()
         self.driver.maximize_window()
         self.get_url(path)
 

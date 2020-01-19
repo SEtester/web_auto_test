@@ -1,7 +1,7 @@
 from selenium import webdriver
 
 
-class DriverUtil():
+class Driver():
     _driver = None
 
     @classmethod
