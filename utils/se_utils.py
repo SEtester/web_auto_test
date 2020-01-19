@@ -28,4 +28,4 @@ class Driver():
     def quit_driver(cls):
         if cls._driver:
             cls._driver.quit()
-            cls._driver = None
+        cls._driver = None
