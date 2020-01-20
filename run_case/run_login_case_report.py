@@ -9,10 +9,11 @@ if __name__ == '__main__':
     cases = unittest.TestLoader().loadTestsFromTestCase(TestLoginCase)
     # runner = unittest.TextTestRunner(verbosity=2)
     # runner.run(cases)
+
     runner = HTMLTestRunner(
         title="带截图，饼图，折线图，历史结果查看的测试报告",
         description="",
-        stream=open("./demo.html", "wb"),
+        stream=open(report_path, "wb"),
         verbosity=2,
         retry=0,
         save_last_try=True)
