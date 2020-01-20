@@ -18,4 +18,6 @@ sys.path.extend([
 ])
 
 from pprint import pprint
-pprint('python引包路径:',sys.path)
+
+print('python引包路径:')
+pprint(sys.path)
