@@ -11,8 +11,8 @@ if __name__ == '__main__':
     # runner.run(cases)
 
     runner = HTMLTestRunner(
-        title="带截图，饼图，折线图，历史结果查看的测试报告",
-        description="",
+        title="自动化测试报告",
+        description="%s ,%s"%(Driver.get_driver().name,cul_platform),
         stream=open(report_path, "wb"),
         verbosity=2,
         retry=0,
