@@ -2,10 +2,14 @@ import unittest
 
 from pages.login_page import LoginPageAction
 from utils.constants import LOGIN_URL
+from utils.se_utils import Driver
 
 
 class TestLoginCase(unittest.TestCase):
 
+    @classmethod
+    def setUp(cls) -> None:
+        cls.driver = Driver.get_driver()
 
     def test_login_success_with_email(self):
         username = 'XXXXXX'
