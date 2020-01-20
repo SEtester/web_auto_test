@@ -25,6 +25,8 @@ class BasePage():
         if url != None:
             self.driver.get(url)
 
+    def delete_all_cookies(self):
+        self.driver.delete_all_cookies()
 
 if __name__ == '__main__':
     from selenium.webdriver.common.by import By
