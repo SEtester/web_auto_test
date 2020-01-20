@@ -1,6 +1,9 @@
 import unittest
+
+from module_path import *
 from test_case.test_login import TestLoginCase
 from utils.se_utils import Driver
+
 
 if __name__ == '__main__':
     cases = unittest.TestLoader().loadTestsFromTestCase(TestLoginCase)
@@ -9,3 +12,4 @@ if __name__ == '__main__':
 
     # 所有用例运行完后关闭浏览器
     Driver.quit_driver()
+    Driver.Driver = None
