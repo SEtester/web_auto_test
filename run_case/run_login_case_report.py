@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     runner = HTMLTestRunner(
         title="自动化测试报告",
-        description="%s ,%s"%(Driver.get_driver().name,cul_platform),
+        description="%s ,%s" % (Driver.get_driver().name, cul_platform),
         stream=open(report_path, "wb"),
         verbosity=2,
         retry=0,
