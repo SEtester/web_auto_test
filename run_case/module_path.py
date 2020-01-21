@@ -27,8 +27,8 @@ print('python引包路径:')
 pprint(sys.path)
 
 report_name = time.strftime('%Y%m%d%H%M%S') + 'WebUiTest' + '.html'
-report_path = report_dir_path + '/' + report_name
-
+report_path = report_dir_path + '/'+ report_name
+print('报告路径:',report_path)
 # 操作系统名称
 cul_platform = sys.platform
 print(cul_platform)
