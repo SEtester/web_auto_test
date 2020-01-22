@@ -32,3 +32,6 @@ print('报告路径:',report_path)
 # 操作系统名称
 cul_platform = sys.platform
 print(cul_platform)
+
+# 配置文件路径
+mail_config_path = config_dir_path + '/mail_config.ini'
