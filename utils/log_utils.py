@@ -1,9 +1,6 @@
 import logging.handlers
 import time
 
-
-
-
 class GetLogger():
     logger = None
 
