@@ -1,8 +1,14 @@
+import sys
+
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from utils.constants import TIMEOUT, POLL_FREQUENCY, DOMAIN
 from utils.se_utils import Driver
+from utils.log_utils import GetLogger
+
+logger = GetLogger.get_logger()
+
 
 class BasePage():
 
@@ -17,8 +23,16 @@ class BasePage():
         return self.driver.find_element(*locator)
 
     def get_url(self, path=None):
+
         if path != None:
-            url = DOMAIN + path
+
+            try:
+                domain = DOMAIN[sys.argv[-1]]
+            except Exception as e:
+                logger.info('找不到环境变量,设置环境变量为默认的url:{}'.format(DOMAIN['test']))
+                domain = DOMAIN['test']
+
+            url = domain + path
         else:
             url = None
 
@@ -28,9 +42,11 @@ class BasePage():
     def delete_all_cookies(self):
         self.driver.delete_all_cookies()
 
+
 if __name__ == '__main__':
     from selenium.webdriver.common.by import By
     from utils.constants import LOGIN_URL
+
     # 构造base_page对象，同时打开目的页面
     base_page = BasePage(path=LOGIN_URL)
     login_locator = (By.CSS_SELECTOR, '#username')
