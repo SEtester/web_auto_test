@@ -1,5 +1,6 @@
 import sys
 
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -18,9 +19,16 @@ class BasePage():
         self.get_url(path)
 
     def find_element(self, locator):
-        WebDriverWait(driver=self.driver, timeout=TIMEOUT, poll_frequency=POLL_FREQUENCY).until(
-            EC.visibility_of_element_located(locator))
-        return self.driver.find_element(*locator)
+        try:
+            WebDriverWait(driver=self.driver, timeout=TIMEOUT, poll_frequency=POLL_FREQUENCY).until(
+                EC.visibility_of_element_located(locator))
+            return self.driver.find_element(*locator)
+        except Exception as e:
+            msg = "元素定位超时 {}: {}".format(locator[0], locator[-1])
+            logger.error(msg)
+            raise TimeoutException(msg)
+
+
 
     def get_url(self, path=None):
 
@@ -39,8 +47,13 @@ class BasePage():
         if url != None:
             self.driver.get(url)
 
+
     def delete_all_cookies(self):
         self.driver.delete_all_cookies()
+
+    @property
+    def current_url(self):
+        return self.driver.current_url
 
 
 if __name__ == '__main__':
