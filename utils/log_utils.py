@@ -1,4 +1,7 @@
 import logging.handlers
+import time
+
+
 
 
 class GetLogger():
@@ -17,7 +20,8 @@ class GetLogger():
             ch = logging.StreamHandler()
 
             # 以时间切分日志文件处理器
-            th = logging.handlers.TimedRotatingFileHandler(filename='../logs/log01.log', when='midnight', interval=1,
+            filename = '../logs' + '/' + time.strftime('%Y%m%d') + 'WebUiTestLog.log'
+            th = logging.handlers.TimedRotatingFileHandler(filename=filename, when='midnight', interval=1,
                                                            backupCount=30, encoding='utf-8')
 
             # 设置日志格式
